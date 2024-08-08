@@ -2,7 +2,14 @@ import mongoose from "mongoose";
 
 
 const attendanceSchema = new mongoose.Schema({
-
+    name:{
+        type: String,
+        required: true
+    },
+    matric_no:{
+        type: String,
+        required: true
+    },
     date:{
         type: Date,
         required: true

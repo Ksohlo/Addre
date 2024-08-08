@@ -1,20 +1,30 @@
 import Attendance from "../models/attendance.model.js";
+import Student from "../models/students.model.js";
 
 export const create = async(req, res) => {
-    const attendanceData = new Attendance(req.body);
+    const reqData = req.body;
 
-    const rfid_id = attendanceData;
-    const date = attendanceData;
-    const registered_rfid = await Attendance.find(rfid_id);
+    const {rfid_id, time} = reqData;
 
-    const allStudent = await Attendance.find();
+    const regData = await Attendance.findOne(rfid_id);
+    const date = (new Date().toDateString());
+    const registered = ((regData.rfid_id === rfid_id) && (regData.date == date));
 
-    if (registered_rfid) {
-        return(res.status(400).json({message:"Attendance already taken"}));
-    }else{
-        const attended = await attendanceData.save();
-        return(res.status(200).json(attended))
+    if (registered){
+        res.status(500).json({message: "Already registed today"})
     }
+
+    const studentInfo = await Student.findOne(rfid_id);
+    // const newRequest = {
+    //     name: studentInfo.name,
+    //     matric_no: studentInfo.matric,
+    //     date: date,
+    //     rfid_id: rfid_id,
+    //     time_in : time,
+    // }
+    // const attendanceData = new Attendance(newRequest);
+    // const attended = await attendanceData.save();
+    res.status(200).json(studentInfo);
 }
 
 

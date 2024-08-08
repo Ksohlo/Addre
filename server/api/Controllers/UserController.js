@@ -58,3 +58,23 @@ export const DeleteUser = async (req, res) => {
         res.status(500).json({error: "Internal Server Error"})   
     }
 }
+
+export const Login = async (req, res) => {
+    try {
+        const {username, password} = req.body;
+        User.findOne({username: username})
+        .then((user) => {
+            if (user) {
+                if (user.password === password) {
+                    res.status(200).json({message: `Welcome back ${user.username}`});
+                }else{
+                    res.status(400).json({message: "Incorrect password"});
+                }
+            }else{
+                res.status(404).json({message: "Record not found"});
+            }
+        })
+    } catch (error) {
+        res.status(500).json({error:"Internal server error"});
+    }
+}
