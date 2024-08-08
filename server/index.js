@@ -1,13 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+import cors from "cors";
 import dotenv from "dotenv"
 import router from "./api/routes/useRoutes.js";
 import Router from "./api/routes/studentRoute.js";
 import attendanceRouter from "./api/routes/attendanceRoute.js";
 
 const app = express()
-
+app.use(cors())
 app.use(bodyParser.json())
 
 dotenv.config()
