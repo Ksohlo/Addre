@@ -9,6 +9,6 @@ router.post("/create", Create);
 router.get("/fetch", Fetch);
 router.put("update/:id", Update);
 router.delete("delete/:id", DeleteUser);
-router.post("/login", Login);
+router.post("/login", Login)
 
 export default router
