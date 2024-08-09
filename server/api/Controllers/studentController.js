@@ -5,11 +5,12 @@ export const create = async (req, res) =>{
         const studentData = new Student(req.body);
 
         const name = studentData;
-
+        
         const studentExist = await Student.findOne(name);
         if (studentExist) {
             return (res.status(400).json({message:"Student data already exist"}));
         } 
+
         const newStudent = await studentData.save();
         res.status(200).json(newStudent);
 
@@ -21,9 +22,6 @@ export const create = async (req, res) =>{
 export const FetchStudent = async (req, res) => {
     try {
         const savedStudents = await Student.find();
-        if(savedStudents.length === 0){
-            res.status(404).json({message:"No Students data found"})
-        }
         res.status(200).json(savedStudents);
     } catch (error) {
         res.status(500).json({error:"Internal Server Error"});

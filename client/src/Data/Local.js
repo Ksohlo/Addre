@@ -7,7 +7,7 @@ const loadData = [
     },
     {
         id: 2,
-        desciption: "Add Users",
+        desciption: "Register Student",
         logo: "bx bxs-user-plus",
         view: "add"
     },
@@ -19,7 +19,7 @@ const loadData = [
     },
     {
         id: 4,
-        desciption: "Delete a Users",
+        desciption: "Delete a Student",
         logo: "bx bxs-user-minus",
         view: "delete"
     },

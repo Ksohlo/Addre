@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import NavBar2 from '../Components/NavBar2'
 import avatar from "../assets/avatar.png"
 import { loadData } from '../Data/Local'
+import Dash from './Dash'
 
 
 const DashBoard = () => {
@@ -24,11 +25,11 @@ const DashBoard = () => {
             </div>
         </div>
         <div className='w-full h-screen flex flex-row relative'>
-            {showMenu && <div className='w-4/10 fixed lg:relative bg-white h-screen border-2 border-l-0 border-slate-400'>
+            {showMenu && <div className='w-4/10 fixed lg:relative bg-white h-screen border-2 border-l-0 border-slate-200'>
                 <ul className=' p-2'>
                     {options.map(item=>{
                         return(
-                            <span key={item.id} onClick={()=>{setView(item.view)}} className='flex flex-row items-center px-2 py-1 cursor-pointer my-1 lg:hover:bg-slate-300 border-b-slate-300 border-b-2 text-purple-900'>
+                            <span key={item.id} onClick={()=>{setView(item.view)}} className='flex flex-row items-center px-4 py-2 cursor-pointer lg:hover:bg-slate-200 border-b-slate-200 border-b-2 text-purple-900'>
                                 <i className={item.logo}></i>
                                 <li className='ml-4 text-sm font-semibold'>{item.desciption}</li>
                             </span>
@@ -36,9 +37,10 @@ const DashBoard = () => {
                     })}
                 </ul>
             </div>}
-            <div className='w-full lg:w-6/10 flex-1 h-screen p-10 bg-yellow-100'> 
+            <div className='w-full lg:w-6/10 flex-1 h-screen px-2 lg:px-5 py-2 lg:py-2 border-t-2 border-slate-200 bg-white'> 
                 <div className='w-full'>
-                    {view}
+                    {view === "dashboard" && <Dash/>}
+
                 </div>
             </div>
         </div>
