@@ -3,6 +3,7 @@ import NavBar2 from '../Components/NavBar2'
 import avatar from "../assets/avatar.png"
 import { loadData } from '../Data/Local'
 import Dash from './Dash'
+import Add from './Add'
 
 
 const DashBoard = () => {
@@ -40,6 +41,7 @@ const DashBoard = () => {
             <div className='w-full lg:w-6/10 flex-1 h-screen px-2 lg:px-5 py-2 lg:py-2 border-t-2 border-slate-200 bg-white'> 
                 <div className='w-full'>
                     {view === "dashboard" && <Dash/>}
+                    {view === "add" && <Add/>}
 
                 </div>
             </div>
