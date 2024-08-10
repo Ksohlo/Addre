@@ -51,10 +51,10 @@ export default function Add() {
             <label htmlFor="phone" className='text-purple-800 font-semibold'>Phone No</label>
             <input onChange={e=>setPhone(e.target.value)} type="tel" placeholder='Enter student phone no' name="phone" id="phone" className='w-full outline-0 h-10 border-2 border-slate-200 rounded-md p-2 mb-2' />
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="address" className='text-purple-800 font-semibold'>Address</label>
             <input onChange={e=>setAddress(e.target.value)} type="text" placeholder='Enter student address' name="address" id="address" className='w-full outline-0 h-10 border-2 border-slate-200 rounded-md p-2 mb-2' />
-          </div>
+          </div> */}
           <button className='w-full h-10 bg-purple-500 text-white font-semibold rounded-md mt-4'>Register</button>
           {/* {loading && <div className=' border-8 border-r-purple-300 border-purple-800 w-10 h-10 mx-auto my-3 rounded-full animate-spin'></div>}         */}
         </form>

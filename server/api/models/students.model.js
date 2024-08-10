@@ -22,10 +22,7 @@ const studentSchema = new mongoose.Schema({
     phone: {
         type: Number,
         required: true
-    },
-    address: {
-        type: String,
-    },
+    }
 })
 
 const Student = mongoose.model("Student", studentSchema);

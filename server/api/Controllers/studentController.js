@@ -3,10 +3,9 @@ import Student from "../models/students.model.js";
 export const create = async (req, res) =>{
     try {
         const studentData = new Student(req.body);
-
         const name = studentData;
-        
         const studentExist = await Student.findOne(name);
+
         if (studentExist) {
             return (res.status(400).json({message:"Student data already exist"}));
         } 
