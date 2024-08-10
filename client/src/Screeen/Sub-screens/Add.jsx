@@ -1,3 +1,4 @@
+// import axios from 'axios';
 import axios from 'axios';
 import React, { useState } from 'react'
 
@@ -5,29 +6,28 @@ export default function Add() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [matric, setMatric] = useState("");
-  const [rfid, setRfid] = useState("");
+  const [rfid_id, setRfid_id] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [loading, setLoading] = useState(false);
+  
+  const reqData = {name, email, matric, rfid_id, phone, address};
 
-  const handleSubmit = async (e)=>{
+  const handleSubmit = (e)=>{
     e.preventDefault();
-    setLoading(true);
-    axios.post("https://addre.onrender.com/api/student/create", {name, email, matric, rfid, phone, address})
+    axios.post("https://addre.onrender.com/api/student/create", reqData)
     .then((res)=>{
-        if (res.status === 200) {
-            alert("Student added successfully");
-            window.location.reload();
-            setLoading(false);
-        }else{
-            alert("Unsuccessfully, please try again or Contact the Developer");
-            setLoading(false);
-        }
-        // console.log(res);
+      if (res.status === 200) {
+        alert("Succesfully Added student to the database");
+        
+      }else{
+        alert("An error occured please contact the developer")
+      }
     })
+    
   }
+
   return (
-    <div>
+    <div className='w-full h-full'>
         <h2 className='text-xl lg:text-3xl font-bold text-purple-800'>Register a Student</h2>
         <h2 className='text-base lg:text-lg mb-2 text-center font-semibold text-black mt-3'>Fill the Form below</h2>
         <form className='w-10/12 md:w-6/12 lg:w-5/12 mx-auto mt-4' onSubmit={handleSubmit}>
@@ -44,8 +44,8 @@ export default function Add() {
             <input onChange={e=>setMatric(e.target.value)} type="text" placeholder='Enter student matric no' name="matric" id="matric" className='w-full outline-0 h-10 border-2 border-slate-200 rounded-md p-2 mb-2' />
           </div>
           <div>
-            <label htmlFor="rfid" className='text-purple-800 font-semibold'>RFID No</label>
-            <input onChange={e=>setRfid(e.target.value)} type="text" placeholder='Enter student unique RFID no' name="rfid" id="rfid" className='w-full outline-0 h-10 border-2 border-slate-200 rounded-md p-2 mb-2' />
+            <label htmlFor="rfid_id" className='text-purple-800 font-semibold'>RFID No</label>
+            <input onChange={e=>setRfid_id(e.target.value)} type="text" placeholder='Enter student unique RFID no' name="rfid_id" id="rfid_id" className='w-full outline-0 h-10 border-2 border-slate-200 rounded-md p-2 mb-2' />
           </div>
           <div>
             <label htmlFor="phone" className='text-purple-800 font-semibold'>Phone No</label>
@@ -56,7 +56,7 @@ export default function Add() {
             <input onChange={e=>setAddress(e.target.value)} type="text" placeholder='Enter student address' name="address" id="address" className='w-full outline-0 h-10 border-2 border-slate-200 rounded-md p-2 mb-2' />
           </div>
           <button className='w-full h-10 bg-purple-500 text-white font-semibold rounded-md mt-4'>Register</button>
-          {loading && <div className=' border-8 border-r-purple-300 border-purple-800 w-10 h-10 mx-auto rounded-full animate-spin'></div>}        
+          {/* {loading && <div className=' border-8 border-r-purple-300 border-purple-800 w-10 h-10 mx-auto my-3 rounded-full animate-spin'></div>}         */}
         </form>
     </div>
   )

@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import NavBar2 from '../Components/NavBar2'
 import avatar from "../assets/avatar.png"
 import { loadData } from '../Data/Local'
-import Dash from './Dash'
-import Add from './Add'
+import Dash from './Sub-screens/Dash'
+import Add from './Sub-screens/Add'
+import Delete from './Sub-screens/Delete'
 
 
 const DashBoard = () => {
@@ -42,6 +43,7 @@ const DashBoard = () => {
                 <div className='w-full'>
                     {view === "dashboard" && <Dash/>}
                     {view === "add" && <Add/>}
+                    {view === "delete" && <Delete/>}
 
                 </div>
             </div>
