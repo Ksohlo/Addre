@@ -22,13 +22,7 @@ const loadData = [
         desciption: "Delete a Student",
         logo: "bx bxs-user-minus",
         view: "delete"
-    },
-    {
-        id: 5,
-        desciption: "Manage Account",
-        logo: "bx bxs-cog",
-        view: "manage"
-    },
+    }
 ]
 
 export {loadData};

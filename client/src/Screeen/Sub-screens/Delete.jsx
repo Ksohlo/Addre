@@ -17,7 +17,7 @@ export default function Delete() {
     }
     return (
     <div className=''>
-        <h2 className='text-xl lg:text-3xl font-bold text-purple-800'>Delete a Student data</h2><h2 className='text-base lg:text-lg mb-2 text-center font-semibold text-black mt-3'>Fill the Form below to delete a student data</h2>
+        <h2 className='text-xl lg:text-3xl font-bold text-purple-800'>Delete a Student data</h2><h2 className='text-base lg:text-lg mb-2 text-center font-semibold text-black mt-3'>Press the Bin button to Delete</h2>
         <div className='flex flex-row items-center h-10 bg-purple-500 text-xs lg:text-sm text-white font-semibold'>
             <p className='w-1/12 mx-4'>S/N</p>
             <p className='w-1/3 lg:w-1/4 '>Name</p>
