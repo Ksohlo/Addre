@@ -6,6 +6,9 @@ const attendanceSchema = new mongoose.Schema({
         type: String,
         required: true
     }
+}, 
+{
+    timestamps: true,
 });
 
 const Attendance = mongoose.model("Attendance", attendanceSchema);
