@@ -2,23 +2,7 @@ import mongoose from "mongoose";
 
 
 const attendanceSchema = new mongoose.Schema({
-    name:{
-        type: String,
-        required: true
-    },
-    matric_no:{
-        type: String,
-        required: true
-    },
-    date:{
-        type: Date,
-        required: true
-    },
-    rfid_id:{
-        type: String,
-        required: true
-    },
-    time_in:{
+    id:{
         type: String,
         required: true
     }
