@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 const attendanceSchema = new mongoose.Schema({
     id:{
-        type: String,
+        type: Text,
         required: true
     }
 }, 
