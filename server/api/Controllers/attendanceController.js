@@ -3,10 +3,11 @@ import Attendance from "../models/attendance.model.js";
 
 
 export const create = async(req, res) => {
-    const reqData = new Attendance(req.body);
+    const id = req.body;
     // const rfid_id = reqData;
-
-    const registered = await reqData.save();
+    const sendData = {"id" : `${id}`};
+    const reqData1 = new Attendance(sendData);
+    const registered = await reqData1.save();
     res.status(200).json(registered);
 
 }
