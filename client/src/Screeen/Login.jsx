@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Alert, Button, Checkbox, Label, Navbar, TextInput } from "flowbite-react";
+import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import NavBar from '../Components/NavBar';
 import {useNavigate} from "react-router-dom"
 
@@ -8,27 +8,33 @@ import {useNavigate} from "react-router-dom"
 export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        axios.post("https://addre.onrender.com/api/user/login", {username, password})
-        .then((res)=>{
-            if (res.status === 200) {
-                alert(res.data.message);
-                navigate("/dashboard");
-                // console.log(res);  
-            }else{
-                alert(res.data.message)
-            }
-            // console.log(res);
-            
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+        try {
+            setLoading(true)
+            axios.post("https://addre.onrender.com/api/user/login", {username, password})
+            .then((res)=>{
+                if (res.status === 200) {
+                    alert(res.data.message);
+                    navigate("/dashboard");
+                    // console.log(res);  
+                    setLoading(false)
+                }else{
+                    alert(res.data.message)
+                    setLoading(false)
+                }
+                // console.log(res);
+                
+            })
+        } catch (error) {
+            alert(error.message);
+            setLoading(false)
+        }
+       
     }
   return (
     <>
@@ -53,7 +59,11 @@ export default function Login() {
             <Checkbox id="remember" />
             <Label htmlFor="remember">Remember me</Label>
         </div>
-        <Button type="submit" className='bg-indigo-800'>Submit</Button>
+        <Button type="submit" className='bg-indigo-800 hover:bg-indigo-600' disabled={loading}>
+            {
+                loading ? (<div className='h-6 w-6 rounded-full border-white border-2 border-r-slate-700 animate-spin' />) : "Submit"
+            }
+        </Button>
         </form>
     </div>
     </>
